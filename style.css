@@ -105,6 +105,40 @@ ul { list-style: none; }
 .hero-wave { position: absolute; bottom: 0; left: 0; right: 0; }
 .hero-wave svg { display: block; width: 100%; }
 
+/* ================ VAN LOCATION ================ */
+.van-location { background: var(--white); }
+
+.location-card { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; background: var(--bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+
+.location-info { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+
+.location-status { display: flex; align-items: center; gap: .6rem; }
+.status-dot { width: 12px; height: 12px; background: #38a169; border-radius: 50%; box-shadow: 0 0 0 3px rgba(56,161,105,.25); animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(56,161,105,.25)} 50%{box-shadow:0 0 0 7px rgba(56,161,105,.1)} }
+.status-text { font-weight: 800; color: #38a169; font-size: 1rem; }
+
+.location-detail { display: flex; align-items: flex-start; gap: .9rem; }
+.loc-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1.4; }
+.location-detail strong { display: block; color: var(--dark); font-weight: 700; }
+.location-detail span { font-size: .95rem; color: var(--text); }
+.loc-message { font-size: 1.05rem; color: var(--pink); font-weight: 700; margin: 0; }
+
+.location-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .5rem; }
+
+.location-map { min-height: 360px; }
+.location-map iframe { width: 100%; height: 100%; min-height: 360px; border: none; display: block; }
+
+.location-offline { text-align: center; background: var(--bg); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+.offline-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.location-offline h3 { font-family: var(--font-head); font-size: 1.5rem; color: var(--dark); margin-bottom: .75rem; }
+.location-offline p { color: var(--text); margin-bottom: 1.5rem; }
+
+@media (max-width: 800px) {
+  .location-card { grid-template-columns: 1fr; }
+  .location-map { min-height: 280px; }
+  .location-map iframe { min-height: 280px; }
+}
+
 /* ================ ABOUT ================ */
 .about { background: var(--white); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
