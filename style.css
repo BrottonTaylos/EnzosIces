@@ -234,6 +234,25 @@ ul { list-style: none; }
 .form-group textarea { resize: vertical; }
 .form-note { text-align: center; font-size: .85rem; color: var(--text); margin-top: 1rem; }
 
+/* Formspree field-level errors */
+.field-error { display: block; font-size: .82rem; color: #e53e3e; margin-top: .25rem; min-height: 1em; }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-color: #e53e3e !important;
+  box-shadow: 0 0 0 3px rgba(229,62,62,.15) !important;
+}
+
+/* Formspree form-level error banner */
+.fs-form-error { font-size: .9rem; color: #e53e3e; background: #fff5f5; border: 1px solid #feb2b2; border-radius: var(--radius-sm); padding: .75rem 1rem; margin-bottom: 1rem; display: none; }
+.fs-form-error:not(:empty) { display: block; }
+
+/* Formspree success panel — hidden until submission */
+[data-fs-success].form-success { display: none; }
+[data-fs-success].form-success[style*="display: block"],
+[data-fs-success].form-success:not([style*="display: none"]):not([style=""]) { display: block; }
+
+/* Submit button disabled state while Formspree is submitting */
+[data-fs-submit-btn]:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+
 .form-success { background: var(--bg); border-radius: var(--radius); padding: 3rem; text-align: center; box-shadow: var(--shadow-lg); }
 .success-icon { font-size: 4rem; margin-bottom: 1rem; }
 .form-success h3 { font-family: var(--font-head); font-size: 1.8rem; color: var(--dark); margin-bottom: 1rem; }

@@ -453,39 +453,57 @@
         </div>
 
         <div class="booking-form-wrap">
-          <form class="booking-form" id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+          <!-- Formspree success message (shown automatically on submission) -->
+          <div data-fs-success class="form-success">
+            <div class="success-icon">🎉</div>
+            <h3>Booking Request Sent!</h3>
+            <p>Thanks for getting in touch! We'll review your request and get back to you to confirm availability.</p>
+            <p>For a quicker response, message us directly on Facebook!</p>
+            <a href="https://www.facebook.com/share/1HVo4KWpRW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="btn btn-facebook">Message on Facebook</a>
+          </div>
+
+          <!-- Formspree form-level error (e.g. network failure) -->
+          <div data-fs-error class="fs-form-error"></div>
+
+          <form class="booking-form" id="bookingForm">
             <h3>Request a Booking 🍦</h3>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name *</label>
-                <input type="text" id="name" name="name" required placeholder="e.g. Sarah Johnson" />
+                <input type="text" id="name" name="name" required placeholder="e.g. Sarah Johnson" data-fs-field />
+                <span data-fs-error="name" class="field-error"></span>
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="e.g. 07700 900000" />
+                <input type="tel" id="phone" name="phone" required placeholder="e.g. 07700 900000" data-fs-field />
+                <span data-fs-error="phone" class="field-error"></span>
               </div>
             </div>
 
             <div class="form-group">
               <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" required placeholder="e.g. sarah@example.com" />
+              <input type="email" id="email" name="email" required placeholder="e.g. sarah@example.com" data-fs-field />
+              <span data-fs-error="email" class="field-error"></span>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="date">Event Date *</label>
-                <input type="date" id="date" name="date" required />
+                <input type="date" id="date" name="date" required data-fs-field />
+                <span data-fs-error="date" class="field-error"></span>
               </div>
               <div class="form-group">
                 <label for="time">Approximate Time *</label>
-                <input type="time" id="time" name="time" required />
+                <input type="time" id="time" name="time" required data-fs-field />
+                <span data-fs-error="time" class="field-error"></span>
               </div>
             </div>
 
             <div class="form-group">
               <label for="event-type">Type of Event *</label>
-              <select id="event-type" name="event_type" required>
+              <select id="event-type" name="event_type" required data-fs-field>
                 <option value="">Select event type...</option>
                 <option value="birthday">Birthday Party</option>
                 <option value="school">School Fete / Event</option>
@@ -497,12 +515,13 @@
                 <option value="sports-day">Sports Day</option>
                 <option value="other">Other</option>
               </select>
+              <span data-fs-error="event_type" class="field-error"></span>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="guests">Approx. Number of Guests *</label>
-                <select id="guests" name="guests" required>
+                <select id="guests" name="guests" required data-fs-field>
                   <option value="">Select...</option>
                   <option value="under-20">Under 20</option>
                   <option value="20-50">20 – 50</option>
@@ -510,43 +529,44 @@
                   <option value="100-200">100 – 200</option>
                   <option value="200+">200+</option>
                 </select>
+                <span data-fs-error="guests" class="field-error"></span>
               </div>
               <div class="form-group">
                 <label for="duration">How Long? *</label>
-                <select id="duration" name="duration" required>
+                <select id="duration" name="duration" required data-fs-field>
                   <option value="">Select...</option>
                   <option value="1hr">1 Hour</option>
                   <option value="2hr">2 Hours</option>
                   <option value="3hr">3 Hours</option>
                   <option value="4hr+">4+ Hours</option>
                 </select>
+                <span data-fs-error="duration" class="field-error"></span>
               </div>
             </div>
 
             <div class="form-group">
               <label for="location">Event Location / Postcode *</label>
-              <input type="text" id="location" name="location" required placeholder="e.g. Town name or postcode" />
+              <input type="text" id="location" name="location" required placeholder="e.g. Town name or postcode" data-fs-field />
+              <span data-fs-error="location" class="field-error"></span>
             </div>
 
             <div class="form-group">
               <label for="message">Anything else we should know?</label>
-              <textarea id="message" name="message" rows="3" placeholder="e.g. theme, dietary requirements, parking info, favourite flavours..."></textarea>
+              <textarea id="message" name="message" rows="3" placeholder="e.g. theme, dietary requirements, parking info, favourite flavours..." data-fs-field></textarea>
+              <span data-fs-error="message" class="field-error"></span>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
-              <span id="btnText">Send Booking Request 🍦</span>
-              <span id="btnLoading" class="hidden">Sending...</span>
+            <button type="submit" class="btn btn-primary btn-full" data-fs-submit-btn>
+              Send Booking Request 🍦
             </button>
             <p class="form-note">* Required fields. We'll get back to you as soon as we can!</p>
           </form>
 
-          <div class="form-success hidden" id="formSuccess">
-            <div class="success-icon">🎉</div>
-            <h3>Booking Request Sent!</h3>
-            <p>Thanks for getting in touch! We'll review your request and get back to you to confirm availability.</p>
-            <p>For a quicker response, message us directly on Facebook!</p>
-            <a href="https://www.facebook.com/share/1HVo4KWpRW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="btn btn-facebook">Message on Facebook</a>
-          </div>
+          <script>
+            window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+            formspree('initForm', { formElement: '#bookingForm', formId: 'mwvdepbv' });
+          </script>
+          <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
         </div>
       </div>
     </div>

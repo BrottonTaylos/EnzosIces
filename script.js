@@ -25,64 +25,10 @@ navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// ===== BOOKING FORM =====
-const form = document.getElementById('bookingForm');
-const formSuccess = document.getElementById('formSuccess');
-const submitBtn = document.getElementById('submitBtn');
-const btnText = document.getElementById('btnText');
-const btnLoading = document.getElementById('btnLoading');
-
-// Set minimum date to today
+// ===== DATE FIELD – enforce minimum date of today =====
 const dateInput = document.getElementById('date');
 if (dateInput) {
-  const today = new Date().toISOString().split('T')[0];
-  dateInput.min = today;
-}
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-  const action = form.getAttribute('action');
-
-  // If using the placeholder Formspree ID, show a demo success
-  if (action.includes('YOUR_FORM_ID')) {
-    showSuccess();
-    return;
-  }
-
-  btnText.classList.add('hidden');
-  btnLoading.classList.remove('hidden');
-  submitBtn.disabled = true;
-
-  try {
-    const response = await fetch(action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      showSuccess();
-    } else {
-      const data = await response.json();
-      alert('Oops! Something went wrong. Please try again or contact us directly on Facebook.');
-      console.error('Form error:', data);
-    }
-  } catch (err) {
-    alert('Network error. Please check your connection and try again, or message us on Facebook!');
-    console.error(err);
-  } finally {
-    btnText.classList.remove('hidden');
-    btnLoading.classList.add('hidden');
-    submitBtn.disabled = false;
-  }
-});
-
-function showSuccess() {
-  form.classList.add('hidden');
-  formSuccess.classList.remove('hidden');
-  formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  dateInput.min = new Date().toISOString().split('T')[0];
 }
 
 // ===== SMOOTH SCROLL active nav highlight =====
@@ -101,7 +47,7 @@ const observer = new IntersectionObserver((entries) => {
 
 sections.forEach(s => observer.observe(s));
 
-// ===== GALLERY – simple lightbox feel (fade on load) =====
+// ===== GALLERY – fade in on scroll =====
 document.querySelectorAll('.gallery-item').forEach((item, i) => {
   item.style.opacity = '0';
   item.style.transform = 'translateY(20px)';
@@ -121,7 +67,7 @@ const galObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.gallery-item').forEach(item => galObserver.observe(item));
 
-// ===== REVIEW CARDS – animate in =====
+// ===== CARDS – animate in on scroll =====
 document.querySelectorAll('.review-card, .menu-card').forEach((card, i) => {
   card.style.opacity = '0';
   card.style.transform = 'translateY(24px)';
