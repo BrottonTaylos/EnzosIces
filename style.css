@@ -96,23 +96,11 @@ ul { list-style: none; }
 .stat-num { font-family: var(--font-head); font-size: 2rem; color: var(--white); line-height: 1; }
 .stat-label { font-size: .85rem; color: rgba(255,255,255,.8); font-weight: 600; }
 
-/* Van Illustration */
-.hero-van { flex: 0 0 420px; }
-.van-illustration { display: flex; justify-content: center; align-items: flex-end; }
-.van-body { width: 380px; position: relative; }
-.van-roof { background: linear-gradient(135deg, #e74c3c, #c0392b); height: 50px; border-radius: 20px 20px 0 0; margin: 0 20px; box-shadow: 0 -4px 12px rgba(0,0,0,.2); }
-.van-sign { background: linear-gradient(135deg, #fff9e6, #fff); padding: .7rem 1.5rem; text-align: center; font-family: var(--font-head); font-size: 1.1rem; color: var(--pink); border-left: 6px solid var(--coral); border-right: 6px solid var(--coral); }
-.van-window-row { background: linear-gradient(135deg, #3498db, #2980b9); padding: 1rem 1.5rem; }
-.van-counter { background: rgba(255,255,255,.15); border-radius: 8px; padding: 1rem; backdrop-filter: blur(4px); }
-.cone-row { display: flex; justify-content: center; gap: 1.5rem; font-size: 2.2rem; }
-.cone { display: inline-block; animation: bounce 2s ease-in-out infinite; }
-.cone:nth-child(2) { animation-delay: .2s; }
-.cone:nth-child(3) { animation-delay: .4s; }
-.cone:nth-child(4) { animation-delay: .6s; }
-@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-.van-base { background: linear-gradient(135deg, #c0392b, #a93226); height: 60px; border-radius: 0 0 8px 8px; position: relative; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 40px 5px; }
-.van-wheel { width: 55px; height: 55px; background: radial-gradient(circle at 35% 35%, #555, #222); border-radius: 50%; border: 5px solid #888; position: relative; bottom: -15px; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
-.van-wheel::after { content: ''; position: absolute; inset: 8px; background: radial-gradient(circle at 35% 35%, #999, #555); border-radius: 50%; }
+/* Real Van Photo in Hero */
+.hero-van { flex: 0 0 460px; }
+.van-photo-hero { border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.3); transform: rotate(2deg); transition: transform .3s; }
+.van-photo-hero:hover { transform: rotate(0deg) scale(1.02); }
+.van-photo-hero img { width: 100%; height: auto; display: block; }
 
 .hero-wave { position: absolute; bottom: 0; left: 0; right: 0; }
 .hero-wave svg { display: block; width: 100%; }
@@ -122,17 +110,7 @@ ul { list-style: none; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .about-image { position: relative; }
 .image-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/3; background: linear-gradient(135deg, #FFE4E1, #FFD6CC); }
-.image-placeholder { width: 100%; height: 100%; position: relative; }
-.image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-.image-placeholder .fallback-content { display: none; }
-.image-placeholder.img-fallback img { display: none; }
-.image-placeholder.img-fallback .fallback-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem; color: var(--pink); }
-.image-placeholder.img-fallback .fallback-content .big-emoji { font-size: 5rem; }
-.image-placeholder.img-fallback .fallback-content p { font-family: var(--font-head); font-size: 1.4rem; }
-
-/* Ensure fallback shows when no photos dir */
-.van-photo-1 { min-height: 300px; display: flex; align-items: center; justify-content: center; }
-.van-photo-1 img { display: block; }
+.image-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .about-badge { position: absolute; bottom: -20px; right: -20px; background: var(--white); border-radius: var(--radius); padding: 1rem 1.5rem; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: .75rem; }
 .badge-icon { font-size: 2rem; }
@@ -159,7 +137,34 @@ ul { list-style: none; }
 .menu-list li { font-size: .9rem; padding: .3rem 0; border-bottom: 1px solid rgba(0,0,0,.05); }
 .menu-card.featured .menu-list li { border-color: rgba(255,255,255,.2); }
 .menu-list li::before { content: '✦ '; font-size: .7rem; }
+/* Price table */
+.price-table { width: 100%; border-collapse: collapse; margin-top: .75rem; font-size: .9rem; }
+.price-table td { padding: .3rem 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.price-table td:last-child { text-align: right; font-weight: 700; color: var(--pink); white-space: nowrap; }
+.menu-card.featured .price-table td { border-color: rgba(255,255,255,.2); color: #fff; }
+.menu-card.featured .price-table td:last-child { color: var(--yellow); }
+
+/* Knickerbocker photo rows */
+.kbg-photos { display: flex; gap: .5rem; margin-top: 1rem; }
+.kbg-photos img { flex: 1; border-radius: 8px; aspect-ratio: 1; object-fit: cover; min-width: 0; }
+.menu-card.featured .kbg-photos img { border: 2px solid rgba(255,255,255,.3); }
+
+/* Sauce list two-col */
+.sauce-list { columns: 2; column-gap: 1rem; }
+
+/* Party card */
+.party-card { background: linear-gradient(135deg, #6C63FF, #4ECDC4); color: #fff; }
+.party-card h3, .party-card p { color: #fff; }
+.party-card .menu-list li { border-color: rgba(255,255,255,.2); color: #fff; }
+
+/* Menu board image */
+.menu-photo-wrap { text-align: center; margin-bottom: 3rem; }
+.menu-board-img { max-width: 700px; width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lg); cursor: zoom-in; transition: transform .3s; margin: 0 auto; }
+.menu-board-img:hover { transform: scale(1.02); }
+.menu-photo-caption { font-size: .85rem; color: var(--text); margin-top: .5rem; font-style: italic; }
+
 .menu-note { text-align: center; margin-top: 2rem; color: var(--text); font-size: .95rem; background: var(--white); padding: 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.menu-note a { color: var(--pink); font-weight: 700; }
 
 /* ================ GALLERY ================ */
 .gallery { background: var(--white); }
