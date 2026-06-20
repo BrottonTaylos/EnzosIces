@@ -183,7 +183,9 @@ ul { list-style: none; }
 
 /* ================ REVIEWS ================ */
 .reviews { background: var(--bg); }
-.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; justify-content: center; }
+.reviews-grid .review-card:only-child,
+.reviews-grid:has(.review-card:nth-child(3):last-child) { max-width: 900px; margin: 0 auto; }
 .review-card { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); transition: transform .2s; }
 .review-card:hover { transform: translateY(-3px); }
 .review-stars { font-size: 1.2rem; margin-bottom: 1rem; }
