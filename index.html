@@ -23,6 +23,7 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#location">Find the Van</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#menu">Menu &amp; Prices</a></li>
         <li><a href="#gallery">Gallery</a></li>
@@ -67,6 +68,63 @@
       <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#fff9f0"/>
       </svg>
+    </div>
+  </section>
+
+  <!-- ========== WHERE'S THE VAN ========== -->
+  <section class="van-location section" id="location">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Live Updates</div>
+        <h2 class="section-title">Where's the Van Today? 📍</h2>
+      </div>
+
+      <!-- Shown when active = true -->
+      <div class="location-card" id="locationCard" style="display:none">
+        <div class="location-info">
+          <div class="location-status">
+            <span class="status-dot"></span>
+            <span class="status-text">We're out today!</span>
+          </div>
+          <div class="location-detail">
+            <span class="loc-icon">📍</span>
+            <div>
+              <strong id="locArea"></strong>
+              <span id="locStreet"></span>
+            </div>
+          </div>
+          <div class="location-detail">
+            <span class="loc-icon">🕐</span>
+            <div>
+              <strong>Opening Hours Today</strong>
+              <span id="locHours"></span>
+            </div>
+          </div>
+          <p class="loc-message" id="locMessage"></p>
+          <div class="location-actions">
+            <a href="#book" class="btn btn-primary">Book for Your Event</a>
+            <a href="https://www.facebook.com/share/1HVo4KWpRW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="btn btn-facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Follow on Facebook
+            </a>
+          </div>
+        </div>
+        <div class="location-map">
+          <iframe id="locMap" title="Enzo's Ices location" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src=""></iframe>
+        </div>
+      </div>
+
+      <!-- Shown when active = false -->
+      <div class="location-offline" id="locationOffline" style="display:none">
+        <div class="offline-icon">🍦</div>
+        <h3>Not out today — but follow us on Facebook for daily location updates!</h3>
+        <p>We post where we'll be each day on our Facebook page. Give us a follow so you never miss us!</p>
+        <a href="https://www.facebook.com/share/1HVo4KWpRW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="btn btn-facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Follow Enzo's Ices on Facebook
+        </a>
+      </div>
+
     </div>
   </section>
 

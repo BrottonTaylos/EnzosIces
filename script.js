@@ -25,6 +25,26 @@ navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
+// ===== WHERE'S THE VAN TODAY =====
+fetch('location.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(loc => {
+    if (loc.active) {
+      document.getElementById('locArea').textContent = loc.area;
+      document.getElementById('locStreet').textContent = loc.street + (loc.postcode ? ', ' + loc.postcode : '');
+      document.getElementById('locHours').textContent = loc.from + ' – ' + loc.to;
+      document.getElementById('locMessage').textContent = loc.message || '';
+      document.getElementById('locMap').src =
+        'https://maps.google.com/maps?q=' + encodeURIComponent(loc.mapQuery || loc.area) + '&output=embed&z=15';
+      document.getElementById('locationCard').style.display = 'grid';
+    } else {
+      document.getElementById('locationOffline').style.display = 'block';
+    }
+  })
+  .catch(() => {
+    document.getElementById('locationOffline').style.display = 'block';
+  });
+
 // ===== DATE FIELD – enforce minimum date of today =====
 const dateInput = document.getElementById('date');
 if (dateInput) {
